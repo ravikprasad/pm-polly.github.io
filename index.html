@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PM Polly – Project Management Feedback</title>
+  <meta name="description" content="Submit your feedback for the 6 project management case studies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <span class="logo-icon">📊</span> PM Polly
+    </a>
+    <div class="navbar-links">
+      <a href="index.html">Home</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="results.html">Results</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">📚 Case Study Evaluation</div>
+      <h1>Project Management<br /><span>Peer Feedback Portal</span></h1>
+      <p>Rate your classmates' case study presentations on three key dimensions. Your honest feedback helps everyone grow.</p>
+      <a href="feedback.html" class="btn btn-primary" style="font-size:1.05rem;padding:.85rem 2rem;">
+        ✍️ Submit Feedback
+      </a>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-row" style="max-width:600px;margin:0 auto 2.5rem;">
+      <div class="stat-card">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Case Studies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statResponses">0</div>
+        <div class="stat-label">Responses</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statStudents">0</div>
+        <div class="stat-label">Students Responded</div>
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="alert alert-info" style="max-width:720px;margin:0 auto 2rem;">
+      <span class="alert-icon">ℹ️</span>
+      <div>
+        <strong>How it works:</strong> Choose a case study, enter your name, and rate the group on
+        <em>Overall Presentation</em>, <em>Content</em>, and <em>Group Participation</em> – each scored 1–10.
+        You can submit feedback for multiple case studies.
+      </div>
+    </div>
+
+    <!-- Case study grid -->
+    <h2 class="section-title">🗂️ Case Studies</h2>
+    <div class="cards-grid" id="caseStudyGrid"></div>
+
+    <!-- Criteria legend -->
+    <hr class="divider" />
+    <h2 class="section-title">📏 Rating Criteria</h2>
+    <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));">
+      <div class="result-card">
+        <h3>🎤 Overall Presentation</h3>
+        <p style="font-size:.875rem;color:var(--text-muted);line-height:1.55;">
+          Evaluates the quality of slides, verbal delivery, clarity of communication, confidence, and the logical flow of the presentation.
+        </p>
+      </div>
+      <div class="result-card">
+        <h3>📋 Content</h3>
+        <p style="font-size:.875rem;color:var(--text-muted);line-height:1.55;">
+          Evaluates depth of research, accuracy of information, relevance to the case, and quality of insights or recommendations provided.
+        </p>
+      </div>
+      <div class="result-card">
+        <h3>🤝 Group Participation</h3>
+        <p style="font-size:.875rem;color:var(--text-muted);line-height:1.55;">
+          Evaluates equal contribution from all members, teamwork, ability to handle Q&amp;A as a group, and overall collaboration quality.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>PM Polly &copy; <span id="yr"></span> &nbsp;·&nbsp; Project Management Case Study Feedback Portal</p>
+  </footer>
+
+  <div id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
