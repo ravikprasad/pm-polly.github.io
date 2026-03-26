@@ -107,6 +107,14 @@ function badgeClass(val) {
   return 'badge-high';
 }
 
+function countUniqueStudents(submissions) {
+  return new Set(submissions.map(s => s.studentName?.toLowerCase().trim())).size;
+}
+
+function scoreAverage(a, b, c) {
+  return (a + b + c) / 3;
+}
+
 /* ── Local storage helpers (for offline / no-backend fallback) ────────────*/
 const STORAGE_KEY = 'pm_polly_submissions';
 
@@ -153,8 +161,7 @@ function initIndexPage() {
 
   // Stats
   qs('#statResponses').textContent = submissions.length;
-  const uniqueStudents = new Set(submissions.map(s => s.studentName?.toLowerCase().trim())).size;
-  qs('#statStudents').textContent = uniqueStudents;
+  qs('#statStudents').textContent = countUniqueStudents(submissions);
 
   // Build case study cards
   CASE_STUDIES.forEach(cs => {
@@ -286,7 +293,7 @@ function initFeedbackPage() {
       presentation: ratings.presentation,
       content: ratings.content,
       participation: ratings.participation,
-      average: ((ratings.presentation + ratings.content + ratings.participation) / 3).toFixed(2),
+      average: scoreAverage(ratings.presentation, ratings.content, ratings.participation).toFixed(2),
       comments: qs('#comments').value.trim(),
     };
 
@@ -339,7 +346,7 @@ function initResultsPage() {
     });
     caseFilter.addEventListener('change', () => {
       const val = caseFilter.value;
-      const filtered = val ? submissions.filter(s => s.caseStudyId === parseInt(val)) : submissions;
+      const filtered = val ? submissions.filter(s => s.caseStudyId === parseInt(val, 10)) : submissions;
       renderTable(filtered);
     });
   }
@@ -404,13 +411,12 @@ function renderOverallStats(submissions) {
   const el = qs('#overallStats');
   if (!el || !submissions.length) return;
   const totalResp = submissions.length;
-  const uniqueStudents = new Set(submissions.map(s => s.studentName?.toLowerCase().trim())).size;
   const avgAll = (
     (avg(submissions, 'presentation') + avg(submissions, 'content') + avg(submissions, 'participation')) / 3
   ).toFixed(1);
   el.innerHTML = `
     <div class="stat-card"><div class="stat-value">${totalResp}</div><div class="stat-label">Total Responses</div></div>
-    <div class="stat-card"><div class="stat-value">${uniqueStudents}</div><div class="stat-label">Unique Students</div></div>
+    <div class="stat-card"><div class="stat-value">${countUniqueStudents(submissions)}</div><div class="stat-label">Unique Students</div></div>
     <div class="stat-card"><div class="stat-value">${avgAll}</div><div class="stat-label">Overall Avg Score</div></div>
   `;
 }
@@ -426,7 +432,7 @@ function renderTable(submissions) {
     .slice()
     .reverse()
     .map(s => {
-      const ov = ((s.presentation + s.content + s.participation) / 3).toFixed(1);
+      const ov = scoreAverage(s.presentation, s.content, s.participation).toFixed(1);
       return `
         <tr>
           <td>${new Date(s.timestamp).toLocaleString()}</td>
@@ -476,9 +482,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (PAGE === 'results')  initResultsPage();
 
   // Highlight active nav link
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   qsa('.navbar-links a').forEach(a => {
-    if (a.href === window.location.href || window.location.pathname.includes(a.getAttribute('href').replace('./', ''))) {
-      a.classList.add('active');
-    }
+    const linkPage = a.getAttribute('href').split('/').pop();
+    if (linkPage === currentPage) a.classList.add('active');
   });
 });
