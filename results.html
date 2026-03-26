@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results – PM Polly</title>
+  <meta name="description" content="View aggregated feedback results for all case study presentations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+      <span class="logo-icon">📊</span> PM Polly
+    </a>
+    <div class="navbar-links">
+      <a href="index.html">Home</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="results.html" class="active">Results</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+      <h1 style="font-size:1.6rem;font-weight:800;">📈 Feedback Results</h1>
+      <button id="exportBtn" class="btn btn-outline btn-sm">📥 Export CSV</button>
+    </div>
+
+    <div class="alert alert-info" style="margin-bottom:1.75rem;">
+      <span class="alert-icon">ℹ️</span>
+      <span>Results are aggregated from all submissions collected in this browser. If a Google Apps Script backend is configured, export your Google Sheet for the full dataset.</span>
+    </div>
+
+    <!-- Overall stats -->
+    <h2 class="section-title">📊 Overview</h2>
+    <div class="stats-row" id="overallStats" style="max-width:600px;margin-bottom:2rem;">
+      <div class="stat-card"><div class="stat-value">–</div><div class="stat-label">Total Responses</div></div>
+      <div class="stat-card"><div class="stat-value">–</div><div class="stat-label">Unique Students</div></div>
+      <div class="stat-card"><div class="stat-value">–</div><div class="stat-label">Overall Avg Score</div></div>
+    </div>
+
+    <!-- Per-case summary cards -->
+    <h2 class="section-title">🗂️ Per Case Study Summary</h2>
+    <div class="results-grid" id="summaryGrid"></div>
+
+    <hr class="divider" />
+
+    <!-- Submissions table -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+      <h2 class="section-title" style="margin-bottom:0;">📋 All Submissions</h2>
+      <div class="filter-bar" style="margin-bottom:0;">
+        <label for="caseFilter">Filter:</label>
+        <select id="caseFilter" class="form-control" style="width:auto;padding:.4rem .75rem;font-size:.875rem;">
+          <option value="">All case studies</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Student</th>
+            <th>Case</th>
+            <th>🎤 Presentation</th>
+            <th>📋 Content</th>
+            <th>🤝 Participation</th>
+            <th>Avg</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody id="submissionsBody">
+          <tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:2rem;">No submissions yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>PM Polly &copy; <span id="yr"></span> &nbsp;·&nbsp; Project Management Case Study Feedback Portal</p>
+  </footer>
+
+  <div id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
