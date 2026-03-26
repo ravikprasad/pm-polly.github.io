@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Submit your feedback on PM case study presentations – rate overall presentation, content quality and group participation." />
+  <title>PM Case Study Feedback</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Favicon (emoji fallback) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════ -->
+<header>
+  <div class="logo" aria-hidden="true">📋</div>
+  <h1>Project Management Case Study Feedback</h1>
+  <p>Your anonymous feedback helps teams improve. Takes about 2 minutes.</p>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════════ -->
+<main>
+
+  <!-- Progress bar -->
+  <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Form completion progress">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- ─────────────────────────────────────────
+       FEEDBACK FORM
+       SETUP REQUIRED:
+       1. Sign up free at https://formspree.io
+       2. Create a new form and copy the form ID
+       3. Replace YOUR_FORM_ID below with your ID
+          (e.g. action="https://formspree.io/f/abcd1234")
+       The site is hosted at:
+         https://ravikprasad.github.io/pm-polly.github.io/
+  ──────────────────────────────────────────── -->
+  <form
+    id="feedback-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <!-- Hidden fields for Formspree redirect -->
+    <input type="hidden" name="_next" value="https://ravikprasad.github.io/pm-polly.github.io/success.html" />
+    <input type="hidden" name="_subject" value="New PM Case Study Feedback Submitted" />
+
+    <!-- ── STEP 1 : Case Study ─────────────────── -->
+    <div class="card" id="case-study-card">
+      <h2>
+        <span class="step-badge" aria-hidden="true">1</span>
+        Which case study are you rating?
+      </h2>
+
+      <div class="case-grid" role="radiogroup" aria-label="Select case study">
+
+        <div class="case-btn">
+          <input type="radio" name="case_study" id="cs1" value="Case Study 1" />
+          <label for="cs1">
+            <span class="case-icon" aria-hidden="true">🏢</span>
+            Case Study 1
+          </label>
+        </div>
+
+        <div class="case-btn">
+          <input type="radio" name="case_study" id="cs2" value="Case Study 2" />
+          <label for="cs2">
+            <span class="case-icon" aria-hidden="true">🌐</span>
+            Case Study 2
+          </label>
+        </div>
+
+        <div class="case-btn">
+          <input type="radio" name="case_study" id="cs3" value="Case Study 3" />
+          <label for="cs3">
+            <span class="case-icon" aria-hidden="true">🚀</span>
+            Case Study 3
+          </label>
+        </div>
+
+        <div class="case-btn">
+          <input type="radio" name="case_study" id="cs4" value="Case Study 4" />
+          <label for="cs4">
+            <span class="case-icon" aria-hidden="true">💡</span>
+            Case Study 4
+          </label>
+        </div>
+
+        <div class="case-btn">
+          <input type="radio" name="case_study" id="cs5" value="Case Study 5" />
+          <label for="cs5">
+            <span class="case-icon" aria-hidden="true">📊</span>
+            Case Study 5
+          </label>
+        </div>
+
+        <div class="case-btn">
+          <input type="radio" name="case_study" id="cs6" value="Case Study 6" />
+          <label for="cs6">
+            <span class="case-icon" aria-hidden="true">🎯</span>
+            Case Study 6
+          </label>
+        </div>
+
+      </div><!-- /.case-grid -->
+
+      <p class="error-msg" role="alert">Please select a case study.</p>
+    </div><!-- /.card -->
+
+    <!-- ── STEP 2 : Ratings ────────────────────── -->
+    <div class="card">
+      <h2>
+        <span class="step-badge" aria-hidden="true">2</span>
+        Rate the presentation (1 = lowest · 10 = highest)
+      </h2>
+
+      <!-- Overall Presentation -->
+      <div class="rating-group" data-rating="overall_presentation">
+        <div class="rating-label">
+          <span class="icon" aria-hidden="true">🎤</span>
+          Overall Presentation
+        </div>
+        <div class="rating-stars" role="radiogroup" aria-label="Rate overall presentation from 1 to 10">
+          <input type="radio" name="overall_presentation" id="op1"  value="1"  /><label for="op1">1</label>
+          <input type="radio" name="overall_presentation" id="op2"  value="2"  /><label for="op2">2</label>
+          <input type="radio" name="overall_presentation" id="op3"  value="3"  /><label for="op3">3</label>
+          <input type="radio" name="overall_presentation" id="op4"  value="4"  /><label for="op4">4</label>
+          <input type="radio" name="overall_presentation" id="op5"  value="5"  /><label for="op5">5</label>
+          <input type="radio" name="overall_presentation" id="op6"  value="6"  /><label for="op6">6</label>
+          <input type="radio" name="overall_presentation" id="op7"  value="7"  /><label for="op7">7</label>
+          <input type="radio" name="overall_presentation" id="op8"  value="8"  /><label for="op8">8</label>
+          <input type="radio" name="overall_presentation" id="op9"  value="9"  /><label for="op9">9</label>
+          <input type="radio" name="overall_presentation" id="op10" value="10" /><label for="op10">10</label>
+        </div>
+        <div class="rating-display" aria-live="polite"></div>
+        <p class="error-msg" role="alert">Please rate overall presentation.</p>
+      </div>
+
+      <!-- Content Quality -->
+      <div class="rating-group" data-rating="content_quality">
+        <div class="rating-label">
+          <span class="icon" aria-hidden="true">📝</span>
+          Content Quality
+        </div>
+        <div class="rating-stars" role="radiogroup" aria-label="Rate content quality from 1 to 10">
+          <input type="radio" name="content_quality" id="cq1"  value="1"  /><label for="cq1">1</label>
+          <input type="radio" name="content_quality" id="cq2"  value="2"  /><label for="cq2">2</label>
+          <input type="radio" name="content_quality" id="cq3"  value="3"  /><label for="cq3">3</label>
+          <input type="radio" name="content_quality" id="cq4"  value="4"  /><label for="cq4">4</label>
+          <input type="radio" name="content_quality" id="cq5"  value="5"  /><label for="cq5">5</label>
+          <input type="radio" name="content_quality" id="cq6"  value="6"  /><label for="cq6">6</label>
+          <input type="radio" name="content_quality" id="cq7"  value="7"  /><label for="cq7">7</label>
+          <input type="radio" name="content_quality" id="cq8"  value="8"  /><label for="cq8">8</label>
+          <input type="radio" name="content_quality" id="cq9"  value="9"  /><label for="cq9">9</label>
+          <input type="radio" name="content_quality" id="cq10" value="10" /><label for="cq10">10</label>
+        </div>
+        <div class="rating-display" aria-live="polite"></div>
+        <p class="error-msg" role="alert">Please rate content quality.</p>
+      </div>
+
+      <!-- Group Participation -->
+      <div class="rating-group" data-rating="group_participation">
+        <div class="rating-label">
+          <span class="icon" aria-hidden="true">🤝</span>
+          Group Participation
+        </div>
+        <div class="rating-stars" role="radiogroup" aria-label="Rate group participation from 1 to 10">
+          <input type="radio" name="group_participation" id="gp1"  value="1"  /><label for="gp1">1</label>
+          <input type="radio" name="group_participation" id="gp2"  value="2"  /><label for="gp2">2</label>
+          <input type="radio" name="group_participation" id="gp3"  value="3"  /><label for="gp3">3</label>
+          <input type="radio" name="group_participation" id="gp4"  value="4"  /><label for="gp4">4</label>
+          <input type="radio" name="group_participation" id="gp5"  value="5"  /><label for="gp5">5</label>
+          <input type="radio" name="group_participation" id="gp6"  value="6"  /><label for="gp6">6</label>
+          <input type="radio" name="group_participation" id="gp7"  value="7"  /><label for="gp7">7</label>
+          <input type="radio" name="group_participation" id="gp8"  value="8"  /><label for="gp8">8</label>
+          <input type="radio" name="group_participation" id="gp9"  value="9"  /><label for="gp9">9</label>
+          <input type="radio" name="group_participation" id="gp10" value="10" /><label for="gp10">10</label>
+        </div>
+        <div class="rating-display" aria-live="polite"></div>
+        <p class="error-msg" role="alert">Please rate group participation.</p>
+      </div>
+
+    </div><!-- /.card -->
+
+    <!-- ── STEP 3 : Optional comment ───────────── -->
+    <div class="card">
+      <h2>
+        <span class="step-badge" aria-hidden="true">3</span>
+        Additional comments <span style="font-weight:400;color:var(--text-muted)">(optional)</span>
+      </h2>
+
+      <label for="comments">What did the group do well? What could be improved?</label>
+      <textarea
+        id="comments"
+        name="comments"
+        rows="4"
+        placeholder="Share your thoughts…"
+        maxlength="1000"
+      ></textarea>
+    </div>
+
+    <!-- ── Submit ────────────────────────────────── -->
+    <button type="submit" class="btn-submit" id="submit-btn">
+      Submit Feedback →
+    </button>
+
+  </form><!-- /#feedback-form -->
+
+</main>
+
+<footer>
+  <p>Project Management Case Study · Feedback Portal · All responses are anonymous.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
