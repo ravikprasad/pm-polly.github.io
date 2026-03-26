@@ -1,0 +1,401 @@
+/* =========================================================
+   PM Polly – Project Management Case Study Feedback
+   Mobile-first responsive stylesheet
+   ========================================================= */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #dbeafe;
+  --accent: #7c3aed;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem 1rem 3rem;
+}
+
+header .logo {
+  font-size: 2.4rem;
+  margin-bottom: .4rem;
+}
+
+header h1 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -.5px;
+}
+
+header p {
+  opacity: .88;
+  margin-top: .4rem;
+  font-size: clamp(.9rem, 2.5vw, 1.05rem);
+}
+
+/* ── Main layout ─────────────────────────────────────────── */
+main {
+  max-width: 680px;
+  margin: -1.5rem auto 3rem;
+  padding: 0 1rem;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.card h2 .step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: .8rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ── Form fields ─────────────────────────────────────────── */
+label {
+  display: block;
+  font-weight: 600;
+  font-size: .9rem;
+  margin-bottom: .4rem;
+  color: var(--text);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: .65rem .9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text);
+  background: #fff;
+  transition: border-color .2s;
+  appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* ── Case study selector ─────────────────────────────────── */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+}
+
+.case-btn {
+  position: relative;
+}
+
+.case-btn input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.case-btn label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  padding: .9rem .5rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  font-weight: 700;
+  font-size: .85rem;
+  text-align: center;
+  background: #fff;
+  color: var(--text-muted);
+  user-select: none;
+  min-height: 80px;
+}
+
+.case-btn label .case-icon {
+  font-size: 1.5rem;
+}
+
+.case-btn input[type="radio"]:checked + label {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.case-btn label:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* ── Rating widget ───────────────────────────────────────── */
+.rating-group {
+  margin-bottom: 1.75rem;
+}
+
+.rating-group:last-child {
+  margin-bottom: 0;
+}
+
+.rating-label {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .95rem;
+  font-weight: 600;
+  margin-bottom: .7rem;
+}
+
+.rating-label .icon {
+  font-size: 1.1rem;
+}
+
+.rating-stars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.rating-stars input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rating-stars label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: #fff;
+  transition: border-color .15s, background .15s, color .15s, transform .1s;
+  margin-bottom: 0;
+}
+
+.rating-stars label:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: scale(1.08);
+}
+
+.rating-stars input[type="radio"]:checked + label {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.rating-display {
+  margin-top: .5rem;
+  font-size: .82rem;
+  color: var(--text-muted);
+  height: 1.1rem;
+}
+
+/* ── Submit button ───────────────────────────────────────── */
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: .9rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: .3px;
+  transition: opacity .2s, transform .15s;
+  margin-top: .5rem;
+}
+
+.btn-submit:hover {
+  opacity: .93;
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Validation messages ─────────────────────────────────── */
+.error-msg {
+  color: var(--danger);
+  font-size: .8rem;
+  margin-top: .3rem;
+  display: none;
+}
+
+.field-error .error-msg {
+  display: block;
+}
+
+.field-error input,
+.field-error select,
+.field-error textarea {
+  border-color: var(--danger);
+}
+
+/* ── Progress bar ────────────────────────────────────────── */
+.progress-bar-wrap {
+  background: var(--border);
+  border-radius: 99px;
+  height: 6px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 99px;
+  transition: width .4s ease;
+  width: 0%;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-muted);
+  font-size: .82rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Success page ────────────────────────────────────────── */
+.success-wrap {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.success-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.success-wrap h1 {
+  font-size: 2rem;
+  color: var(--success);
+  margin-bottom: .75rem;
+}
+
+.success-wrap p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: .75rem 2rem;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 700;
+  transition: opacity .2s;
+}
+
+.btn-back:hover {
+  opacity: .88;
+}
+
+/* ── Responsive tweaks ───────────────────────────────────── */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .case-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rating-stars label {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: .85rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .case-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
